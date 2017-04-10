@@ -1,0 +1,44 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block styles %}
+{{ super() }}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock %}
+
+
+{% block title %}
+Selected Sock: {{ the_sock.name }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+
+      <!-- note, the id is not used _in_ the template, although the
+		       route requires the id -->
+
+      <h1>{{ the_sock.name }}</h1>
+
+			<ul>
+				<li class="lead"><strong>Style:</strong> {{ the_sock.style }}</li>
+				<li class="lead"><strong>Color:</strong> {{ the_sock.color }}</li>
+				<li class="lead"><strong>Quantity:</strong> {{ the_sock.quantity }}</li>
+				<li class="lead"><strong>Price:</strong> ${{ the_sock.price }}</li>
+				<li class="lead"><strong>Updated:</strong> {{ the_sock.updated }}</li>
+			</ul>
+
+      <p><a href="{{ url_for('index') }}">Return to search page</a></p>
+
+      <!-- notice how the URL in the link above is rendered for
+           Flask - it needs to name the FUNCTION, not the route
+					 and NOT the template! 
+      -->
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
