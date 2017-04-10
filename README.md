@@ -4,6 +4,8 @@ Detailed information about this project is in this document:
 
 [Flask app with a MySQL database](http://bit.ly/mm-flask-db)
 
+All the app code is in the file *database_app.py*
+
 In the */database* folder, there is a database table you can import and use (if you don't have your own). The README in that folder explains how to set it up using [phpMyAdmin](https://www.phpmyadmin.net/).
 
 Because this repo is created for students using [XAMPP](https://www.apachefriends.org/index.html) (which works on both Mac and Windows), our database management system is [MariaDB](https://mariadb.org/about/).
