@@ -1,4 +1,4 @@
-# How to import an export tables with phpMyAdmin
+# How to import and export tables with phpMyAdmin
 
 ## To import a database table (MySQL and phpMyAdmin):
 
@@ -23,7 +23,7 @@ Click name of table (e.g. socks) near top left.
 
 1. Start server if using XAMPP.
 2. Open phpMyAdmin.
-3. Open the table you want to export (Databases tab).
+3. Open the **table** you want to export (Databases tab).
 4. At top, click the Export tab.
 5. Find the "Go" button at bottom of page. Click it.
 
