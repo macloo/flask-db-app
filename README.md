@@ -2,7 +2,7 @@
 
 This branch will stay apart and separate from *master* because *master* should remain as simple as possible for students to use.
 
-The app file to run in this branch is: *db_app2.py**
+The app file to run in this branch is: *db_app2.py*
 
 It adds new routes to:
 
@@ -11,4 +11,4 @@ It adds new routes to:
 
 All this is done using Flask-SQLAlchemy and Flask-WTF as strictly as I can figure out. I am pretty darned excited about how these things work, especially because they are so fabulously more wonderful than using PHP!
 
-Like the version in *master,* this version depends on the same one-table MySQL database running in XAMPP on *localhost,* while the Flask app runs on *localhost:5000.*
+Like the version in *master,* this version depends on the same one-table MySQL database (sockmarket) running in XAMPP on *localhost,* while the Flask app runs on *localhost:5000.*
