@@ -2,7 +2,7 @@
 
 h1 {
   font-weight: bold;
-  color: #05BDFA;
+  color: #31B0D5;
   padding-bottom: 0.5em;
 }
 
@@ -11,7 +11,19 @@ h1 {
   padding-top: 20px;
 }
 
+.space-below {
+  margin-bottom: 40px;
+}
+
+.space-below-btn {
+  margin-bottom: 10px;
+}
+
 .colorful {
   background: #69D6FA;
   padding: 1em;
+}
+
+.center-align {
+  text-align: center;
 }
