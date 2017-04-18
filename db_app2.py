@@ -1,5 +1,3 @@
-#!/Users/mcadams/Documents/python/headfirst/env/bin/python
-
 # /Users/username/Documents/python/projectname/env/bin/python
 
 #   change the path above to match yours
@@ -16,7 +14,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import date
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'phoo!bambi?jinn-FeZ*yeh'
+app.config['SECRET_KEY'] = 'secret!sauce'
 
 # connect to local database
 userpass = 'mysql+pymysql://root:@'
@@ -162,7 +160,7 @@ def add():
         updated = stringdate()
         # the data to be inserted into Sock model - the table, socks
         record = Sock(name, style, color, quantity, price, updated)
-        # Flask-SQLAlchemy magic adds record to database 
+        # Flask-SQLAlchemy magic adds record to database
         db.session.add(record)
         db.session.commit()
         # create a message to send to the template
