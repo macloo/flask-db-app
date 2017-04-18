@@ -30,32 +30,15 @@ Selected Sock: {{ the_sock.name }}
 				<li class="lead"><strong>Updated:</strong> {{ the_sock.updated }}</li>
 			</ul>
 
-			{% if id %}
-			<!-- these will not be here if id was not POSTed via form -->
-						<form method="post" action="{{ url_for('update') }}" role="form" name="update_form" id="update_form">
-							{{ form1.csrf_token }}
-							{{ form1.id_field(value=id) }}
-							{{ form1.submit(class="btn btn-info space-below-btn") }}
-						</form>
-
-						<form method="post" action="{{ url_for('delete') }}" role="form" name="delete_form" id="delete_form">
-							{{ form2.csrf_token }}
-							{{ form2.id_field(value=id) }}
-							{{ form2.submit(class="btn btn-info space-below-btn") }}
-						</form>
-
-			<p><a href="{{ url_for('sock_table') }}">Return to table</a></p>
-			{% endif %}
-
       <p><a href="{{ url_for('index') }}">Return to search page</a></p>
 
       <!-- notice how the URL in the link above is rendered for
            Flask - it needs to name the FUNCTION, not the route
-					 and NOT the template!
+					 and NOT the template! 
       -->
 
     </div>
   </div>
 </div>
 
-			{% endblock %}
+{% endblock %}
