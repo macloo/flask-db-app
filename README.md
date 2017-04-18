@@ -15,3 +15,10 @@ Students are expected to deploy their Flask app on a standard web server via a s
 This combination is convenient for teaching, because students need not pay for additional services, and they retain control of their app, database and files after the course ends, because they are responsible for their own web hosting account.
 
 As the typical shared hosting account has cPanel and phpMyAdmin by default, students are spared the additional work of setting up a MySQL server on their own.
+
+## The edit-db branch
+
+Switch to the *edit-db* branch to see how to insert a new record into the database using Flask-SQLAlchemy. In that branch, you can also:
+
+* Edit and delete records.
+* View all records.
