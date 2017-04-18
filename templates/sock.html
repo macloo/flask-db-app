@@ -22,13 +22,24 @@ Selected Sock: {{ the_sock.name }}
 
       <h1>{{ the_sock.name }}</h1>
 
-			<ul>
-				<li class="lead"><strong>Style:</strong> {{ the_sock.style }}</li>
-				<li class="lead"><strong>Color:</strong> {{ the_sock.color }}</li>
-				<li class="lead"><strong>Quantity:</strong> {{ the_sock.quantity }}</li>
-				<li class="lead"><strong>Price:</strong> ${{ the_sock.price }}</li>
-				<li class="lead"><strong>Updated:</strong> {{ the_sock.updated }}</li>
-			</ul>
+			<table class="small-table">
+				<tr>
+					<th>Style:</th>
+					<td>{{ the_sock.style }}</td>
+				</tr><tr>
+					<th>Color:</th>
+					<td>{{ the_sock.color }}</td>
+				</tr><tr>
+					<th>Quantity:</th>
+					<td>{{ the_sock.quantity }}</td>
+				</tr><tr>
+					<th>Price:</th>
+					<td>${{ the_sock.price }}</td>
+				</tr><tr>
+					<th>Updated:</th>
+					<td>{{ the_sock.updated }}</td>
+				</tr>
+			</table>
 
 			{% if id %}
 			<!-- these will not be here if id was not POSTed via form -->
@@ -44,7 +55,7 @@ Selected Sock: {{ the_sock.name }}
 							{{ form2.submit(class="btn btn-info space-below-btn") }}
 						</form>
 
-			<p><a href="{{ url_for('sock_table') }}">Return to table</a></p>
+			<p><a href="{{ url_for('sock_table') }}">Return to table</a> (Nothing will be changed)</p>
 			{% endif %}
 
       <p><a href="{{ url_for('index') }}">Return to search page</a></p>

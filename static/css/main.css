@@ -27,3 +27,13 @@ h1 {
 .center-align {
   text-align: center;
 }
+
+.small-table th, .small-table td {
+  font-size: 1.5em;
+  padding-bottom: 10px;
+  padding-right: 1em;
+}
+
+.small-table {
+  margin-bottom: 20px;
+}
