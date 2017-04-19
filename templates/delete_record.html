@@ -45,9 +45,10 @@ Delete Database Record
 			<p class="lead">Are you sure you want to permanently delete this record?</p>
 
 			<form method="post" action="{{ url_for('result') }}" role="form" name="delete_form" id="delete_form">
-				{{ form3.csrf_token }}
-				{{ form3.id_field(value=id) }}
-				{{ form3.submit(class="btn btn-info space-below-btn") }}
+				{{ form2.csrf_token }}
+				{{ form2.id_field(value=id) }}
+				{{ form2.purpose(value='deleted') }}
+				{{ form2.submit(class="btn btn-info space-below-btn") }}
 			</form>
 
 			<p><a href="{{ url_for('sock_table') }}">Return to table</a> (Nothing will be changed)</p>

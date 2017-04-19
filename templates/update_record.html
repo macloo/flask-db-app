@@ -1,0 +1,68 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles %}
+{{ super() }}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock %}
+
+
+{% block title %}
+Update Sock Record
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+
+      <h1>Update This Sock Record</h1>
+
+      <p class="lead">Edit and update this existing sock record.</p>
+			<p><a href="{{ url_for('sock_table') }}">View all socks</a></p>
+			<p><a href="{{ url_for('index') }}">Search page: Find socks by style</a></p>
+
+		</div>
+	</div>
+
+	<div class="row">
+
+		<div class="col-xs-12 col-md-6 colorful">
+
+<!-- manual insertion of Bootstrap styles --> 
+<form method="post" action="{{ url_for('result') }}" role="form" name="update_form" id="update_form">
+	{{ form3.csrf_token }}
+	{{ form3.id_field(value=the_sock.id) }}
+	{{ form3.purpose(value='updated') }}
+	<div class="form-group">
+		{{ form3.name.label }}
+		{{ form3.name(class_="form-control", value=the_sock.name) }}
+	</div>
+	<div class="form-group">
+		{{ form3.style.label }}
+		{{ form3.style(class_="form-control", selected=the_sock.style) }}
+	</div>
+	<div class="form-group">
+		{{ form3.color.label }}
+		{{ form3.color(class_="form-control", value=the_sock.color) }}
+	</div>
+	<div class="form-group">
+		{{ form3.quantity.label }}
+		{{ form3.quantity(class_="form-control", value=the_sock.quantity) }}
+	</div>
+	<div class="form-group">
+		{{ form3.price.label }}
+		{{ form3.price(class_="form-control", value=the_sock.price) }}
+	</div>
+	<div class="form-group">
+		{{ form3.submit(class_="btn btn-default space-below-btn") }}
+	</div>
+</form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

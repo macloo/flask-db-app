@@ -1,4 +1,4 @@
-# /Users/username/Documents/python/projectname/env/bin/python
+#!/Users/mcadams/Documents/python/headfirst/env/bin/python
 
 #   change the path above to match yours
 
@@ -68,15 +68,19 @@ class SockForm(FlaskForm):
 
 # two forms for sock.html - they submit to different routes
 class UpdateChoiceForm(FlaskForm):
-    id_field = HiddenField('id')
+    id_field = HiddenField()
+    purpose = HiddenField()
     submit = SubmitField('Update This Record')
 
 class DeleteChoiceForm(FlaskForm):
-    id_field = HiddenField('id')
+    id_field = HiddenField()
+    purpose = HiddenField()
     submit = SubmitField('Delete This Record')
 
-# form for add.html - insert new record
+# form for add.html - insert new record - and update_record.html 
 class AddRecord(FlaskForm):
+    id_field = HiddenField()
+    purpose = HiddenField()
     name = StringField('Sock name', [InputRequired()])
     style = SelectField('Choose the sock style', [InputRequired()],
     choices=[ ('', ''), ('ankle', 'Ankle'),
@@ -87,7 +91,7 @@ class AddRecord(FlaskForm):
     quantity = IntegerField('Quantity in stock', [InputRequired()])
     price = FloatField('Retail price per pair', [InputRequired()])
     # updated is handled in route
-    submit = SubmitField('Add This Record')
+    submit = SubmitField('Add/Update Record')
 
 # get local date - does not account for time zone
 def stringdate():
@@ -140,26 +144,44 @@ def sock_table():
 # two routes - each opened by form sock.html
 @app.route('/update', methods=['POST'])
 def update():
-    return "Update record"
+    # if POST and id received, do this
+    id = request.form['id_field']
+    the_sock = Sock.query.filter_by(id=id).first()
+    form3 = AddRecord(obj=the_sock)
+    return render_template('update_record.html', the_sock=the_sock, id=id, form3=form3)
 
 @app.route('/delete', methods=['POST'])
 def delete():
     # if POST and id received, do this
     id = request.form['id_field']
-    the_sock = Sock.query.filter_by(id=id).first_or_404()
-    form3 = DeleteChoiceForm()
-    return render_template('delete_record.html', the_sock=the_sock, id=id, form3=form3)
+    the_sock = Sock.query.filter_by(id=id).first()
+    form2 = DeleteChoiceForm()
+    return render_template('delete_record.html', the_sock=the_sock, id=id, form2=form2)
 
+# handle the deletion or the update - this route called by two templates
 @app.route('/result', methods=['POST'])
 def result():
     # if POST and id received, do this
     id = request.form['id_field']
+    purpose = request.form['purpose']
     the_sock = Sock.query.filter_by(id=id).first()
     sockname = the_sock.name
-    result = "deleted"
-    db.session.delete(the_sock)
-    db.session.commit()
-    return render_template('result.html', result=result, sockname=sockname)
+    if purpose == 'deleted':
+        db.session.delete(the_sock)
+        db.session.commit()
+    elif purpose == 'updated':
+        the_sock.name = request.form['name']
+        the_sock.style = request.form['style']
+        the_sock.color = request.form['color']
+        the_sock.quantity = request.form['quantity']
+        the_sock.price = request.form['price']
+        # get today's date from function, above all the routes
+        the_sock.updated = stringdate()
+        # update database record
+        db.session.commit()
+    else:
+        return render_template('405.html'), 405
+    return render_template('result.html', result=purpose, sockname=sockname)
 
 # add a new sock to the database
 @app.route('/add', methods=['GET', 'POST'])
