@@ -87,7 +87,7 @@ class AddRecord(FlaskForm):
     quantity = IntegerField('Quantity in stock', [InputRequired()])
     price = FloatField('Retail price per pair', [InputRequired()])
     # updated is handled in route
-    submit = SubmitField('Add Record')
+    submit = SubmitField('Add This Record')
 
 # get local date - does not account for time zone
 def stringdate():
@@ -144,7 +144,22 @@ def update():
 
 @app.route('/delete', methods=['POST'])
 def delete():
-    return "Delete record"
+    # if POST and id received, do this
+    id = request.form['id_field']
+    the_sock = Sock.query.filter_by(id=id).first_or_404()
+    form3 = DeleteChoiceForm()
+    return render_template('delete_record.html', the_sock=the_sock, id=id, form3=form3)
+
+@app.route('/result', methods=['POST'])
+def result():
+    # if POST and id received, do this
+    id = request.form['id_field']
+    the_sock = Sock.query.filter_by(id=id).first()
+    sockname = the_sock.name
+    result = "deleted"
+    db.session.delete(the_sock)
+    db.session.commit()
+    return render_template('result.html', result=result, sockname=sockname)
 
 # add a new sock to the database
 @app.route('/add', methods=['GET', 'POST'])
