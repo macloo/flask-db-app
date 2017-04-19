@@ -1,4 +1,4 @@
-# A Flask app using a MySQL database
+# edit-db branch: A Flask app using a MySQL database
 
 This branch will stay apart and separate from *master* because *master* should remain as simple as possible for students to use.
 
