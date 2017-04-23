@@ -66,3 +66,27 @@ This was very hard for me to figure out on this form, which updates an existing 
 This form was a breeze to create, including lots of validation requirements.
 
 ![Screenshot: Add new record](/github_images/add_new_record.png)
+
+## Pros and cons
+
+This was hard for me to figure out because the Flask-WTF documentation is so minimal, and the WTForms documentation is so verbose.
+
+Validation on a form that started out as blank (add a new record) was quite easy — the biggest challenge was to write the regex strings. (Tip: Use [Pythex](http://pythex.org/).) Flask-WTF has so much built into `wtf.quick_form()` — it's awesome.
+
+Filling the form from an existing database record: I couldn't figure out how to manage that with the quick_form, so I had to work with the `wtf.form_field()` syntax. That wasn't *too* taxing (see [WTForms support](https://pythonhosted.org/Flask-Bootstrap/forms.html) in the Flask-Bootstrap docs) — but using validation with `form.validate_on_submit()` just DID NOT WORK until I realized I had to capture and reuse the values in the form (because I couldn't reload the database record while the user is editing it — the edits would be lost).
+
+Get a value out of a form that was POSTed:
+
+`color = request.form['color']`
+
+Get a value out of a form that has not been submitted:
+
+`color = form.color.data`
+
+Anyway, after a struggle that lasted abut two days, I got it working.
+
+## `flash()`
+
+[Flask message flashing](http://flask.pocoo.org/docs/0.12/patterns/flashing/)
+
+This turned out to be *essential* to displaying validation messages in the form, and it was also pretty tough for me to work through.
