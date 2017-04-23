@@ -15,24 +15,37 @@ Like the version in *master,* this version depends on the same one-table MySQL d
 
 ## What it does
 
+`@app.route('/', methods=['GET'])`
 ![Screenshot: Index/home](/github_images/index.png)
 
-![Screenshot: List](/github_images/list_by_style.png | width=100)
+`@app.route('/list', methods=['POST'])`
+![Screenshot: List](/github_images/list_by_style.png)
 
+`@app.route('/sock/<id>')`
 ![Screenshot: Sock detail](/github_images/sock_detail_01.png)
 
+`@app.route('/socks', methods=['GET', 'POST'])`
+
+table.html
 ![Screenshot: Table, all socks](/github_images/table.png)
 
+sock.html
 ![Screenshot: Sock detail](/github_images/sock_detail_02.png)
 
+`@app.route('/delete', methods=['POST'])`
 ![Screenshot: Confirm deletion](/github_images/delete_sure.png)
 
+`@app.route('/deletion_result', methods=['POST'])`
 ![Screenshot: Result](/github_images/result_deleted.png)
 
+`@app.route('/update', methods=['POST'])`
 ![Screenshot: Update exisitng record](/github_images/update_record.png)
 
+Example of form validation — Flask `flash()` method
 ![Screenshot: Validation message](/github_images/validation.png)
 
+`@app.route('/update_result', methods=['POST'])`
 ![Screenshot: Result](/github_images/result_updated.png)
 
+`@app.route('/add', methods=['GET', 'POST'])`
 ![Screenshot: Add new record](/github_images/add_new_record.png)
