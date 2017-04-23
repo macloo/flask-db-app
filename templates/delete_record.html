@@ -44,7 +44,7 @@ Delete Database Record
 
 			<p class="lead">Are you sure you want to permanently delete this record?</p>
 
-			<form method="post" action="{{ url_for('result') }}" role="form" name="delete_form" id="delete_form">
+			<form method="post" action="{{ url_for('deletion_result') }}" role="form" name="delete_form" id="delete_form">
 				{{ form2.csrf_token }}
 				{{ form2.id_field(value=id) }}
 				{{ form2.purpose(value='deleted') }}
