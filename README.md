@@ -35,6 +35,8 @@ table.html
 
 sock.html
 
+After a sock was selected from the table, you can choose to update it or delete it.
+
 ![Screenshot: Sock detail](/github_images/sock_detail_02.png)
 
 `@app.route('/delete', methods=['POST'])`
@@ -51,6 +53,8 @@ sock.html
 
 Example of form validation — Flask `flash()` method
 
+This was very hard for me to figure out on this form, which updates an existing record. It was easy as pie for the add-new-record form (below), though.
+
 ![Screenshot: Validation message](/github_images/validation.png)
 
 `@app.route('/update_result', methods=['POST'])`
@@ -58,5 +62,7 @@ Example of form validation — Flask `flash()` method
 ![Screenshot: Result](/github_images/result_updated.png)
 
 `@app.route('/add', methods=['GET', 'POST'])`
+
+This form was a breeze to create, including lots of validation requirements.
 
 ![Screenshot: Add new record](/github_images/add_new_record.png)
