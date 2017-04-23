@@ -69,7 +69,7 @@ This form was a breeze to create, including lots of validation requirements.
 
 ## Pros and cons
 
-This was hard for me to figure out because the Flask-WTF documentation is so minimal, and the WTForms documentation is so verbose.
+This was hard for me to figure out because the [Flask-WTF](https://flask-wtf.readthedocs.io/) documentation is so minimal, and the [WTForms](https://wtforms.readthedocs.io/) documentation is so verbose.
 
 Validation on a form that started out as blank (add a new record) was quite easy — the biggest challenge was to write the regex strings. (Tip: Use [Pythex](http://pythex.org/).) Flask-WTF has so much built into `wtf.quick_form()` — it's awesome.
 
